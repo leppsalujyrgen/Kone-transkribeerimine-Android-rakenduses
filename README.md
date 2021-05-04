@@ -1,46 +1,48 @@
-Kõnele service
-==============
+Kõne transkribeerimise näidisrakendus Androidile
+================================================
 
-Kõnele service is an Android app that offers a speech-to-text service to other apps, in particular to Kõnele (<https://github.com/Kaljurand/K6nele>).
-It implements Android's [SpeechRecognizer](http://developer.android.com/reference/android/speech/SpeechRecognizer.html) interface using
-an open source speech recognition server software <https://github.com/alumae/kaldi-gstreamer-server>.
+Kirjeldus
+---------
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
-     alt="Get it on Google Play"
-     height="80">](https://play.google.com/store/apps/details?id=ee.ioc.phon.android.k6neleservice)
-
-Building the APK from source
-----------------------------
-
-Clone the source code including the `speechutils` submodule:
-
-    git clone --recursive git@github.com:Kaljurand/K6nele-service.git
+Näidisrakendus Androidis, mis transkribeerib kasutaja kõne ja kirjutab tulemuse tekstikasti.
+Kood on kommenteeritud ja sisaldab vaid transkribeerimiseks vajalikku, mis teeb programmi 
+töö mõistmise lihtsaks. 
 
 
-Point to the Android SDK directory by setting the environment variable
-`ANDROID_HOME`, e.g.
+Paigaldamine
+------------
 
-    ANDROID_HOME=${HOME}/myapps/android-sdk/
+Rakendus pole saadaval APKna või Play Poes rakendusena. Seega tuleb lähtekoodist rakendus kompileerida.
 
-In order to change your build environment create the file `gradle.properties`
-at a location pointed to by the environment variable `GRADLE_USER_HOME`.
-This will extend and override the definitions found in the `gradle.properties`
-that is part of the release. Add e.g.
+Rakenduse proovimiseks on vaja täita järgmised sammud:
 
-    org.gradle.jvmargs=-Xmx1536m
-    org.gradle.parallel=true
-    # Experimental (makes the APK a bit smaller)
-    android.enableR8.fullMode=true
+Paigaldada Android Studio. See on allalaetav [siit](https://developer.android.com/studio?gclid=Cj0KCQjwvr6EBhDOARIsAPpqUPF2ceedQLxOMrbKwvUWqbVNfcudXaGmYyGwC1v46Ens_vixnfYo5vIaAriOEALw_wcB&gclsrc=aw.ds)
 
-Build the app
+Lae alla see repositoorium ja alammoodul `speechutils` kasutades käsku 
+```
+git clone --recursive git@github.com:leppsalujyrgen/Kone-transkribeerimine-Android-rakenduses.git
+```
 
-    ./gradlew assemble
+Ava projekt `Kone-transkribeerimine-Android-rakenduses` Android Studio IDEs ja jooksuta Gradle käsku
+```
+gradle assemble
+```
 
-If you have access to a release keystore then add these lines to the extended `gradle.properties`:
+Nüüd on kogu vajalik lähtekood arvutis olemas. Programmi käivitamiseks on vaja **füüsilist Androidi nutiseadet**, sest
+emulaatorid pole võimelised mikrofoni salvestama. Rakenduse käivitamiseks arvutis leiad juhised [siit](https://developer.android.com/training/basics/firstapp/running-app).
 
-    storeFilename=</path/to/store.jks>
-    storePassword=<storePassword>
-    keyAlias=<keyAlias>
-    keyPassword=<keyPassword>
 
-The (signed and unsigned) APKs will be generated into `app/build/outputs/apk/`.
+
+Lisainfo ja viited 
+------------------
+
+**NB!** Rakendus on lõimitud Kaarel Kaljuranna rakenduse [Kõnele-service](https://github.com/Kaljurand/K6nele-service) rakendusega järgides litsentsi 
+Apache 2.0 reegleid. Need eeskirjad rakenduvad ka selle töö modifitseerimisele ja reprodutseerimisel.
+Täpsem informatsioon failis ,,LICENCE.txt".
+
+* [Bakalaureusetöö]() - Lõputöö, mille raames käesolev rakendus loodi. (viide lisatakse töö avalikustamisel)
+* [Eestikeelse häälassistendi raamistik](https://github.com/leppsalujyrgen/eestikeelse-haalassistendi-raamistik) - Androidi rakendus, mis võtab sisendiks kasutaja häälkäskluse ning selle põhjal tuvastab soovitud tegevuse.
+* [Kõnele service](https://github.com/Kaljurand/K6nele-service) - Eestikeelse kõne transkribeerimise tarkvara Androidile.
+* [Dictate.js](https://github.com/Kaljurand/dictate.js) - Eestikeelse kõne transkribeerimise tarkvara JavaScriptile. Sisaldab muuhulgas demorakendusi, mille abil saab proovida kõne transkribeerimist.
+* [Kõne transkribeerimise näidisrakendus JavaScriptile](https://github.com/leppsalujyrgen/Kone-transkribeerimine-JavaScriptis.git) -  Lihtsakoeline JavaScripti rakendus, mis Dictate.js tarkvara kasutades, kõne transkribeerib. Veel lihtsam variant autoriloodud demorakendustest. 
+
