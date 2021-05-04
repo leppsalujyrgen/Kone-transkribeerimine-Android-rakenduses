@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="labelApp" translatable="false">Kõnele service</string>
+    <!-- JÜRGEN LEPPSALU MUUDATUSED ALGAVAD -->
+    <string name="labelApp" translatable="false">Kõnele service demo</string> <!-- Muudeti rakenduse pealkiri "Kõnele service" pealkirjaks "Kõnele service demo" -->
+    <!-- JÜRGEN LEPPSALU MUUDATUSED LÕPPEVAD. -->
     <string name="descriptionApp" translatable="false">speech-to-text service for Android apps</string>
     <string name="hintLocalServer" translatable="false">10.0.0.2</string>
     <string name="statusServerStatus" translatable="false">…</string>

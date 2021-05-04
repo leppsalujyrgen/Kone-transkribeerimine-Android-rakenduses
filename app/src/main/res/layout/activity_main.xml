@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    File: activity_main.xml
+    Description: This file was created so the demo application would have a GUI.
+    Author: Jürgen Leppsalu
+    Date: 04.05.2021
+-->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ee.ioc.phon.android.testrakendus.demo.MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="181dp"
+        android:layout_height="88dp"
+        android:layout_marginBottom="44dp"
+        android:text="Alusta kõnelemist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="318dp"
+        android:layout_height="284dp"
+        android:layout_marginTop="195dp"
+        android:layout_marginBottom="120dp"
+        android:text="Alustamiseks vajuta nuppu ja räägi. Teie kõne salvestatakse ja transkriptsioon kirjutatakse siia tekstikasti."
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
