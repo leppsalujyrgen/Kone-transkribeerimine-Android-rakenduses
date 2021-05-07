@@ -11,8 +11,11 @@ package ee.ioc.phon.android.testrakendus.demo;
  */
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
@@ -34,6 +37,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Ask for relevant permissions from the user.
+        String[] PERMISSIONS = {
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.INTERNET
+        };
+        boolean necessaryPermissionsMissing = false;
+        for (String PERMISSION : PERMISSIONS) {
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(), PERMISSION) == PackageManager.PERMISSION_GRANTED) {
+                necessaryPermissionsMissing=true;
+                break;
+            }
+        }
+        if (necessaryPermissionsMissing) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PackageManager.PERMISSION_GRANTED);
+        }
 
         Button button = (Button) findViewById(R.id.button);
         TextView textView = (TextView) findViewById(R.id.textView);
